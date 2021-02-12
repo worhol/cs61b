@@ -1,4 +1,5 @@
 import java.lang.Math;
+
 public class Body {
     public double xxPos;
     public double yyPos;
@@ -24,20 +25,33 @@ public class Body {
         this.mass = b.mass;
         this.imgFileName = b.imgFileName;
     }
-    public double calcDistance(Body b){
+
+    public double calcDistance(Body b) {
 //        r2=dx2+dy2
-            double dx = Math.pow((this.xxPos - b.xxPos),2);
-            double dy = Math.pow((this.yyPos-b.yyPos),2);
-        return Math.sqrt(dx+dy);
+        double dx = Math.pow((this.xxPos - b.xxPos), 2);
+        double dy = Math.pow((this.yyPos - b.yyPos), 2);
+        return Math.sqrt(dx + dy);
     }
-    public static final double g(){
+
+    public static final double g() {
         return 6.67e-11;
     }
-    public double calcForceExertedBy(Body b){
+
+    public double calcForceExertedBy(Body b) {
 //        G=6.67⋅10−11Nm2kg2
 //        F=G⋅m1⋅m2/r2
 
-        return ( g()*this.mass*b.mass)/Math.pow(calcDistance(b),2);
+        return (g() * this.mass * b.mass) / Math.pow(calcDistance(b), 2);
+
+    }
+
+    public double calcForceExertedByX(Body b) {
+        return (b.xxPos-this.xxPos)/this.calcDistance(b)*this.calcForceExertedBy(b);
+
+    }
+
+    public double calcForceExertedByY(Body b) {
+        return (b.yyPos - this.yyPos) / this.calcDistance(b) * this.calcForceExertedBy(b);
 
     }
 }
