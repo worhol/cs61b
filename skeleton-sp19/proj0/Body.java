@@ -1,3 +1,4 @@
+import java.lang.Math;
 public class Body {
     public double xxPos;
     public double yyPos;
@@ -22,5 +23,11 @@ public class Body {
         this.yyVel = b.yyVel;
         this.mass = b.mass;
         this.imgFileName = b.imgFileName;
+    }
+    public double calcDistance(Body b){
+//        r2=dx2+dy2
+            double dx = Math.pow((this.xxPos - b.xxPos),2);
+            double dy = Math.pow((this.yyPos-b.yyPos),2);
+        return Math.sqrt(dx+dy);
     }
 }
