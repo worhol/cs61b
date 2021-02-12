@@ -30,4 +30,14 @@ public class Body {
             double dy = Math.pow((this.yyPos-b.yyPos),2);
         return Math.sqrt(dx+dy);
     }
+    public static final double g(){
+        return 6.67e-11;
+    }
+    public double calcForceExertedBy(Body b){
+//        G=6.67⋅10−11Nm2kg2
+//        F=G⋅m1⋅m2/r2
+
+        return ( g()*this.mass*b.mass)/Math.pow(calcDistance(b),2);
+
+    }
 }
