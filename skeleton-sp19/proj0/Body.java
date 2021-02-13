@@ -46,12 +46,34 @@ public class Body {
     }
 
     public double calcForceExertedByX(Body b) {
-        return (b.xxPos-this.xxPos)/this.calcDistance(b)*this.calcForceExertedBy(b);
+        return (b.xxPos - this.xxPos) / this.calcDistance(b) * this.calcForceExertedBy(b);
 
     }
 
     public double calcForceExertedByY(Body b) {
         return (b.yyPos - this.yyPos) / this.calcDistance(b) * this.calcForceExertedBy(b);
 
+    }
+
+    public double calcNetForceExertedByX(Body[] b) {
+        double netSum = 0;
+        for (int i = 0; i < b.length; i++) {
+            if (b[i].mass == this.mass) {
+                continue;
+            }
+            netSum += calcForceExertedByX(b[i]);
+        }
+        return netSum;
+    }
+
+    public double calcNetForceExertedByY(Body[] b) {
+        double netSum = 0;
+        for (int i = 0; i < b.length; i++) {
+            if (b[i].mass == this.mass) {
+                continue;
+            }
+            netSum += calcForceExertedByY(b[i]);
+        }
+        return netSum;
     }
 }
