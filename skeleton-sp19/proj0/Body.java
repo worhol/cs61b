@@ -76,4 +76,17 @@ public class Body {
         }
         return netSum;
     }
+
+    public void update(double time, double forceX, double forceY){
+//        ax=Fx/m Calculate the acceleration X
+            double aX = forceX/this.mass;
+//        ay=Fy/m Calculate the acceleration Y
+            double aY = forceY/this.mass;
+            //Calculate the velocity
+            this.xxVel+=time*aX;
+            this.yyVel+=time*aY;
+            //Calculate the new position
+            this.xxPos+=time*this.xxVel;
+            this.yyPos+=time*this.yyVel;
+    }
 }
