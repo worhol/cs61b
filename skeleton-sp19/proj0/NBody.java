@@ -1,5 +1,16 @@
 public class NBody {
 
+    public static void main(String[] args) {
+        double T = Double.parseDouble(args[0]);
+        double dt = Double.parseDouble(args[1]);
+        String filename = args[2];
+        double radius = readRadius(filename);
+        StdDraw.setScale(-radius, radius);
+        StdDraw.picture(0, 0, "images/starfield.jpg");
+        StdDraw.show();
+
+    }
+
     public static double readRadius(String fileName) {
         In in = new In(fileName);
         int first = in.readInt();
