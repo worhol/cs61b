@@ -89,4 +89,10 @@ public class Body {
             this.xxPos+=time*this.xxVel;
             this.yyPos+=time*this.yyVel;
     }
+    public void draw(){
+        StdDraw.enableDoubleBuffering();
+        StdDraw.picture(xxPos,yyPos,"images/"+this.imgFileName);
+        StdDraw.show();
+        StdDraw.pause(1);
+    }
 }
